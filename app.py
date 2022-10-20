@@ -21,7 +21,7 @@ st.set_page_config(
     initial_sidebar_state = 'auto'
 )
 
-st.sidebar.image('logo.png')
+st.sidebar.image('image/logo.png')
 st.sidebar.title('Fraudulent Claim Detection')
 st.sidebar.write('---')
 
@@ -33,7 +33,7 @@ This app predict whether the **Claim is Fraud or Not**!
 st.write('---')
 
 # Loads the Dataset
-data_path = 'fraudulent_claim_insurance.csv'
+data_path = 'data/fraudulent_claim_insurance.csv'
 data_df = pd.read_csv(data_path)
 data_df = data_df.drop(['DATE', 'ID', 'LOCALITY', 'CLAIM_DESCRIPTION'], axis=1)
 data_df = data_df[data_df['REGION'].notna()]
@@ -197,7 +197,7 @@ y = data_df['FRAUD']
 
 # to retrain
 agree = st.checkbox('Check to retrain the model')
-filename = 'finalized_model.sav'
+filename = 'model/finalized_model.sav'
 if agree:
     # Build Regression Model
     model = LogisticRegression()
